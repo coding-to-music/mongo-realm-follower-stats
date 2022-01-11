@@ -57,7 +57,6 @@ export default function Login() {
     fn();
   }, [socialMediaNames]);
 
-  //   console.log(socialMediaNames);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
