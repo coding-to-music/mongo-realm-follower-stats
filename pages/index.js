@@ -68,10 +68,16 @@ export default function Home() {
             // 1. Create new user in users collection
             // 2. In whichever social media the user has selected, create a new object with the data you want to store in that collection
             console.log("Clicked signup");
-            const newUser = {
+            let newUser = {
               name,
               email,
             };
+            let socials = [];
+            if (twitter) socials.push("twitter");
+            if (medium) socials.push("medium");
+
+            newUser.socials = socials;
+
             const REALM_APP_ID = "followers_tracker-vlmoo";
             const app = new Realm.App({ id: REALM_APP_ID });
             const credentials = Realm.Credentials.anonymous();

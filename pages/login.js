@@ -1,8 +1,11 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
+import { useRouter } from "next/router";
 
 export default function Login() {
+  const router = useRouter();
+
   // const [products, setProducts] = useState([]);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -49,9 +52,10 @@ export default function Login() {
             const credentials = Realm.Credentials.anonymous();
             try {
               const user = await app.logIn(credentials);
-              const userPresent = await user.functions.loginUser(email);
+              const userPresent = await user.functions.findUser(email);
               if (userPresent) {
                 setMessage("user present. logging you in");
+                router.push("/dashboard");
               } else {
                 setMessage("user not present. cant login");
               }
