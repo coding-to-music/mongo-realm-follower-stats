@@ -7,7 +7,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
-  const [medium, setMedium] = useState("");
+  const [github, setGithub] = useState("");
 
   const [message, setMessage] = useState("");
 
@@ -55,11 +55,11 @@ export default function Home() {
             onChange={(e) => setTwitter(e.target.value)}
           />{" "}
           <br />
-          Enter Medium username
+          Enter GitHub username
           <input
             className="border-2 border-black"
-            value={medium}
-            onChange={(e) => setMedium(e.target.value)}
+            value={github}
+            onChange={(e) => setGithub(e.target.value)}
           />
         </div>
         <button
@@ -74,7 +74,7 @@ export default function Home() {
             };
             let socials = [];
             if (twitter) socials.push("twitter");
-            if (medium) socials.push("medium");
+            if (github) socials.push("github");
 
             newUser.socials = socials;
 
@@ -108,20 +108,20 @@ export default function Home() {
                 );
               }
             }
-            if (medium) {
+            if (github) {
               try {
                 const user = await app.logIn(credentials);
                 await user.functions.registerSocialHandle({
-                  social: "medium",
-                  username: medium,
+                  social: "github",
+                  username: github,
                   email: newUser.email,
                   followers: [],
                 });
-                setMessage("medium handle registered");
+                setMessage("github handle registered");
               } catch (error) {
                 console.error(error);
                 setMessage(
-                  "medium handle registration failed. please register in settings after login"
+                  "github handle registration failed. please register in settings after login"
                 );
               }
             }
