@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 
@@ -21,7 +22,10 @@ export default function Home() {
         <div>
           New stuff
           <br />
-          <a href="/api/auth/login">Login</a>
+          {/* <a href="/api/auth/login">Login</a> */}
+          <Link href="/user">
+            <a>Login</a>
+          </Link>
           <br />
           <a href="/api/auth/logout">Logout</a>
         </div>
