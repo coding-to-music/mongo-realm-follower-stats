@@ -6,23 +6,9 @@ import { useRouter } from "next/router";
 export default function Login() {
   const router = useRouter();
 
-  // const [products, setProducts] = useState([]);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  // useEffect(async () => {
-  //   const REALM_APP_ID = "products-xridh";
-  //   const app = new Realm.App({ id: REALM_APP_ID });
-  //   const credentials = Realm.Credentials.anonymous();
-  //   try {
-  //     const user = await app.logIn(credentials);
-  //     const allProducts = await user.functions.getAllProducts();
-  //     setProducts(allProducts);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, []);
-  // console.log(name, email);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>

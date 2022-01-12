@@ -2,8 +2,9 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 import { useRouter } from "next/router";
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
-export default function Login() {
+export default function ProtectedDashboardPage() {
   const [socialMediaNames, setSocialMediaNames] = useState([]);
   const [socialData, setSocialData] = useState(undefined);
 
@@ -66,9 +67,6 @@ export default function Login() {
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
         Welcome to Dashboard, <b>{currentUserEmail}</b>
-        {/* {user && <div>{JSON.stringify(user)}</div>} */}
-        {/* {user?.socials?.length > 0 &&
-          user.socials.map((social) => <div>{social}</div>)} */}
         {socialMediaNames?.length > 0 &&
           socialMediaNames?.map((socialMediaName) => (
             <div>{JSON.stringify(socialMediaName)}</div>
@@ -80,3 +78,5 @@ export default function Login() {
     </div>
   );
 }
+
+export const getServerSideProps = withPageAuthRequired();

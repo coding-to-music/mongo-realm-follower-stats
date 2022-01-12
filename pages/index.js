@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 
 export default function Home() {
-  // const [products, setProducts] = useState([]);
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
@@ -11,19 +10,6 @@ export default function Home() {
 
   const [message, setMessage] = useState("");
 
-  // useEffect(async () => {
-  //   const REALM_APP_ID = "products-xridh";
-  //   const app = new Realm.App({ id: REALM_APP_ID });
-  //   const credentials = Realm.Credentials.anonymous();
-  //   try {
-  //     const user = await app.logIn(credentials);
-  //     const allProducts = await user.functions.getAllProducts();
-  //     setProducts(allProducts);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }, []);
-  // console.log(name, email);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -32,6 +18,13 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
+        <div>
+          New stuff
+          <br />
+          <a href="/api/auth/login">Login</a>
+          <br />
+          <a href="/api/auth/logout">Logout</a>
+        </div>
         <div>
           Enter email to signup
           <input
