@@ -10,8 +10,6 @@ export default function ProtectedSettingsPage() {
 
   const [socialMediaNames, setSocialMediaNames] = useState([]);
   const [socialData, setSocialData] = useState(undefined);
-  const [twitterUsername, setTwitterUsername] = useState("");
-  const [githubUsername, setGithubUsername] = useState("");
 
   useEffect(() => {
     async function fn() {
@@ -50,11 +48,6 @@ export default function ProtectedSettingsPage() {
             username: data.username,
             followers: data.followers,
           };
-          if (socialMediaNames[i] === "twitter") {
-            setTwitterUsername(data.username);
-          } else if (socialMediaNames[i] === "github") {
-            setGithubUsername(data.username);
-          }
         }
 
         setSocialData(finalData);
@@ -68,7 +61,8 @@ export default function ProtectedSettingsPage() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-
+  console.log(socialMediaNames);
+  console.log(socialData);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -80,53 +74,28 @@ export default function ProtectedSettingsPage() {
         <h2>Settings Page</h2>
         <div>Hey {user.name}, here are your enabled social media:</div>
         <div>
-          <div>
-            Twitter:{" "}
-            <input
-              placeholder="twitter username"
-              className="border-2 border-red-200"
-              value={twitterUsername}
-              onChange={(e) => setTwitterUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            GitHub:{" "}
-            <input
-              placeholder="gitHub username"
-              className="border-2 border-red-200"
-              value={githubUsername}
-              onChange={(e) => setGithubUsername(e.target.value)}
-            />
-          </div>
+          {supportedSocialMedia.map((sm) => {
+            const socialMediaPresent = socialMediaNames.includes(sm);
+            let smUsername = "";
+            if (socialData && socialData[sm]) {
+              smUsername = socialData[sm]?.username;
+            }
+            return (
+              <div>
+                {sm} :{" "}
+                <input
+                  className="border-2 border-red-200"
+                  defaultValue={
+                    socialMediaPresent ? smUsername || "Loading..." : ""
+                  }
+                  readOnly={!!smUsername}
+                />{" "}
+                <button>X</button>
+              </div>
+            );
+          })}
         </div>
-
-        <button
-          className="bg-blue-500"
-          onClick={async () => {
-            // do saves for all social media one by one
-            const REALM_APP_ID = "followers_tracker-vlmoo";
-            const app = new Realm.App({ id: REALM_APP_ID });
-            const credentials = Realm.Credentials.anonymous();
-            // Twitter registration
-            const mongoUser = await app.logIn(credentials);
-            await mongoUser.functions.registerSocialHandle({
-              social: "twitter",
-              username: twitterUsername,
-              email: user.email,
-              followers: [],
-            });
-            // GitHub registration
-            const mongoUser = await app.logIn(credentials);
-            await mongoUser.functions.registerSocialHandle({
-              social: "github",
-              username: githubUsername,
-              email: user.email,
-              followers: [],
-            });
-          }}
-        >
-          SAVE
-        </button>
+        <button onClick={() => {}}>ADD ANOTHER SOCIAL MEDIA</button>
       </main>
     </div>
   );
