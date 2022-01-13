@@ -1,13 +1,11 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
+import Link from "next/link";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { FaTwitter, FaGithub, FaDev } from "react-icons/fa";
 
 import Footer from "../components/Footer";
-import socialMediaMappings from "../utils/socialMediaMappings";
-import Link from "next/link";
 
 const supportedSocialMedia = ["twitter", "github", "devto"];
 
@@ -224,7 +222,7 @@ export default function ProtectedSettingsPage() {
                           <div className="flex justify-end">
                             <button
                               type="button"
-                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-right text-blue-700 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-right text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200"
                             >
                               Save
                             </button>
@@ -271,7 +269,7 @@ export default function ProtectedSettingsPage() {
                   </div>
 
                   <div className="flex justify-center mt-5 ml-10 -mb-5">
-                    <div className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                    <div className="inline-flex items-center px-4 py-2 text-base font-medium text-blue-700 bg-blue-100 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         class="h-6 w-6"
@@ -295,10 +293,7 @@ export default function ProtectedSettingsPage() {
               </div>
             </div>
           </main>
-          {/* Footer */}
-          <div className="absolute bottom-0 w-full">
-            <Footer />
-          </div>
+          <Footer />
         </div>
       </div>
     </div>

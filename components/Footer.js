@@ -1,16 +1,15 @@
 import React from "react";
 import { FaTwitter, FaGithub, FaDev, FaHeart } from "react-icons/fa";
-import { AiFillHeart } from "react-icons/ai";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="" aria-labelledby="footerHeading">
+      <footer className="bg-gray-100" aria-labelledby="footerHeading">
         <h2 id="footerHeading" className="sr-only">
           Footer
         </h2>
-        <div className="px-4 pt-16 pb-8 mx-auto max-w-7xl sm:px-6 lg:pt-24 lg:px-8">
-          <div className="pt-8 mt-12 border-t border-gray-200 md:flex md:items-center md:justify-between lg:mt-16">
+        <div className="px-4 pb-8 mx-auto max-w-7xl sm:px-6 lg:px-8">
+          <div className="pt-8 border-t-2 border-gray-200 md:flex md:items-center md:justify-between ">
             <div className="flex space-x-6 md:order-2">
               <a
                 href="https://dev.to/geekysrm"
