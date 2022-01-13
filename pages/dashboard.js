@@ -116,95 +116,63 @@ export default function ProtectedDashboardPage() {
                           </div>
                         </div>
                       </div>
-                      {/* Devto */}
-                      <div className="flex flex-col overflow-hidden bg-white ">
-                        <div className="flex-grow px-4 py-5 sm:p-6">
-                          <div className="flex items-center">
-                            <FaDev className="w-10 h-10 text-[#090909]" />
 
-                            <div className="flex-1 w-0 ml-5">
-                              <dd className="flex items-baseline justify-between">
-                                <div className="flex flex-col text-gray-900">
-                                  <span className="text-2xl font-semibold ">
-                                    Dev.to
-                                  </span>
-                                  <span className="text-sm text-gray-600">
-                                    @geekysrm
-                                  </span>
-                                </div>
-
-                                <div className="flex flex-col text-2xl font-semibold text-gray-700">
-                                  71,897
-                                </div>
-
-                                <div className="flex items-center ml-2 text-sm font-semibold text-green-500">
-                                  <TiArrowSortedUp className="w-6 h-6 text-green-500" />
-                                  <span className="text-lg font-extrabold">
-                                    122
-                                  </span>
-                                </div>
-                                {/* Above  */}
-                              </dd>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {socialMediaNames.map((sm) => {
-                        const followersData = socialData[sm]?.followers;
-                        // if(followersData)
-                        const currentFollowers =
-                          followersData &&
-                          followersData[followersData?.length - 1]?.count;
-                        let lastWeekFollowers = 0;
-                        if (followersData?.length >= 8) {
-                          lastWeekFollowers =
+                      {socialData &&
+                        socialMediaNames.map((sm) => {
+                          const followersData = socialData[sm]?.followers;
+                          const currentFollowers =
                             followersData &&
-                            followersData[followersData?.length - 8]?.count;
-                        } else {
-                          lastWeekFollowers =
-                            followersData && followersData[0]?.count;
-                        }
-                        const difference = currentFollowers - lastWeekFollowers;
-                        return (
-                          <div className="flex flex-col overflow-hidden bg-white ">
-                            <div className="flex-grow px-4 py-5 sm:p-6">
-                              <div className="flex items-center">
-                                <FaDev className="w-10 h-10 text-[#090909]" />
+                            followersData[followersData?.length - 1]?.count;
+                          let lastWeekFollowers = 0;
+                          if (followersData?.length >= 8) {
+                            lastWeekFollowers =
+                              followersData &&
+                              followersData[followersData?.length - 8]?.count;
+                          } else {
+                            lastWeekFollowers =
+                              followersData && followersData[0]?.count;
+                          }
+                          const difference =
+                            currentFollowers - lastWeekFollowers;
+                          return (
+                            <div className="flex flex-col overflow-hidden bg-white ">
+                              <div className="flex-grow px-4 py-5 sm:p-6">
+                                <div className="flex items-center">
+                                  <FaDev className="w-10 h-10 text-[#090909]" />
 
-                                <div className="flex-1 w-0 ml-5">
-                                  <dd className="flex items-baseline justify-between">
-                                    <div className="flex flex-col text-gray-900">
-                                      <span className="text-2xl font-semibold ">
-                                        Dev.to
-                                      </span>
-                                      <span className="text-sm text-gray-600">
-                                        @{socialData[sm]?.username}
-                                      </span>
-                                    </div>
+                                  <div className="flex-1 w-0 ml-5">
+                                    <dd className="flex items-baseline justify-between">
+                                      <div className="flex flex-col text-gray-900">
+                                        <span className="text-2xl font-semibold ">
+                                          Dev.to
+                                        </span>
+                                        <span className="text-sm text-gray-600">
+                                          @{socialData[sm]?.username}
+                                        </span>
+                                      </div>
 
-                                    <div className="flex flex-col text-2xl font-semibold text-gray-700">
-                                      {currentFollowers}
-                                    </div>
+                                      <div className="flex flex-col text-2xl font-semibold text-gray-700">
+                                        {currentFollowers}
+                                      </div>
 
-                                    <div className="flex items-center ml-2 text-sm font-semibold text-green-500">
-                                      {difference > 0 ? (
-                                        <TiArrowSortedUp className="w-6 h-6 text-green-500" />
-                                      ) : (
-                                        <TiArrowSortedDown className="w-6 h-6 text-red-500" />
-                                      )}
-                                      <span className="text-lg font-extrabold">
-                                        {difference}
-                                      </span>
-                                    </div>
-                                    {/* Above  */}
-                                  </dd>
+                                      <div className="flex items-center ml-2 text-sm font-semibold text-green-500">
+                                        {difference > 0 ? (
+                                          <TiArrowSortedUp className="w-6 h-6 text-green-500" />
+                                        ) : (
+                                          <TiArrowSortedDown className="w-6 h-6 text-red-500" />
+                                        )}
+                                        <span className="text-lg font-extrabold">
+                                          {difference}
+                                        </span>
+                                      </div>
+                                      {/* Above  */}
+                                    </dd>
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        })}
                     </div>
                     <div className="w-1/2">
                       <img src="images/social-girl.png" />
