@@ -218,6 +218,39 @@ export default function ProtectedSettingsPage() {
                           >
                             How to get Dev.to API Key?
                           </a>
+                          <div className="flex flex-col items-center">
+                            <div className="flex mt-6 space-x-3 overflow-hidden">
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/youtube.png"
+                                alt=""
+                              />
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/mailchimp.png"
+                                alt=""
+                              />
+
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/buttondown.png"
+                                alt=""
+                              />
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/convertkit.png"
+                                alt=""
+                              />
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/linkedin.png"
+                                alt=""
+                              />
+                            </div>
+                            <h3 className="mt-2 text-lg font-light text-gray-600">
+                              Coming soon...
+                            </h3>
+                          </div>
                         </div>
                       </div>
                     </div>
