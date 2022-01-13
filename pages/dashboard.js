@@ -77,7 +77,6 @@ export default function ProtectedDashboardPage() {
         <div className="bg-white">
           {/* <Header user={user} /> */}
           <main>
-            {/* Hero section */}
             <div className="bg-gray-100">
               <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <div className="p-20 bg-white rounded-lg shadow pb-28">
@@ -227,23 +226,6 @@ export default function ProtectedDashboardPage() {
           </div>
         </div>
       </div>
-
-      {/* <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
-        Welcome to Dashboard, <b>{user.name}</b>
-        {socialMediaNames?.length > 0 &&
-          socialMediaNames?.map((socialMediaName) => (
-            <div>{JSON.stringify(socialMediaName)}</div>
-          ))}
-        <br />
-        <br />
-        {JSON.stringify(socialData)}
-        <div>
-          GO to{" "}
-          <Link href="/settings">
-            <a>Settings</a>
-          </Link>
-        </div>
-      </main> */}
     </div>
   );
 }

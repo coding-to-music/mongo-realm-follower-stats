@@ -59,7 +59,7 @@ export default function ProtectedUserPage() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Followers Tracker</title>
+        <title>FollowStats</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

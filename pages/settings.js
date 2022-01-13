@@ -2,8 +2,14 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
+import { FaTwitter, FaGithub, FaDev } from "react-icons/fa";
 
-const supportedSocialMedia = ["twitter", "github"];
+import Footer from "../components/Footer";
+import socialMediaMappings from "../utils/socialMediaMappings";
+import Link from "next/link";
+
+const supportedSocialMedia = ["twitter", "github", "devto"];
 
 export default function ProtectedSettingsPage() {
   const { user, error, isLoading } = useUser();
@@ -73,79 +79,184 @@ export default function ProtectedSettingsPage() {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="">
       <Head>
-        <title>Followers Tracker</title>
+        <title>FollowStats</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
-        <h2>Settings Page</h2>
-        <div>Hey {user.name}, here are your enabled platforms:</div>
-        <div>
-          <div>
-            Twitter:{" "}
-            <input
-              placeholder="twitter username"
-              className="border-2 border-red-200"
-              value={twitterUsername}
-              onChange={(e) => setTwitterUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            GitHub:{" "}
-            <input
-              placeholder="gitHub username"
-              className="border-2 border-red-200"
-              value={githubUsername}
-              onChange={(e) => setGithubUsername(e.target.value)}
-            />
-          </div>
-          <div>
-            Devto:{" "}
-            <input
-              placeholder="devto api key"
-              className="border-2 border-red-200"
-              value={devtoUsername}
-              onChange={(e) => setDevtoUsername(e.target.value)}
-            />
+      <div className="overflow-y-auto">
+        <div className="bg-white">
+          {/* <Header user={user} /> */}
+          <main>
+            <div className="bg-gray-100">
+              <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="p-20 bg-white rounded-lg shadow pb-28">
+                  <h2 className="ml-10 text-3xl font-extrabold tracking-tight text-gray-600">
+                    Settings
+                  </h2>
+                  <h3 className="ml-10 text-lg font-semibold text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      Social Platforms{" "}
+                    </div>
+                  </h3>
+
+                  <div className="flex pl-4 mt-6 ">
+                    {/* heading */}
+                    <div className="w-1/2">
+                      <div className="flex flex-col -mb-5 overflow-hidden">
+                        <div className="flex-grow py-5 bg-white sm:py-6">
+                          <div className="flex items-center">
+                            <div className="flex-1 w-0 ml-5">
+                              <dd className="flex items-baseline space-x-44">
+                                <div className="flex text-gray-700">
+                                  <span className="pt-5 font-semibold text-md">
+                                    Platform
+                                  </span>
+                                </div>
+
+                                <div className="flex font-semibold text-gray-700">
+                                  <span className="text-md">Username</span>
+                                </div>
+                              </dd>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col overflow-hidden bg-white ">
+                        <div className="flex-grow px-4 py-5 space-y-7 sm:p-6">
+                          <div className="flex items-center">
+                            <FaTwitter
+                              className="w-10 h-10 text-[#1DA1F2]  mr-2"
+                              style={{ color: "#1DA1F2" }}
+                            />
+
+                            <div className="flex-1 w-0">
+                              <dd className="flex items-baseline justify-between">
+                                <div className="flex flex-col text-gray-900">
+                                  <span className="text-2xl font-semibold ">
+                                    Twitter
+                                  </span>
+                                </div>
+
+                                <div className="flex flex-col text-2xl font-semibold text-gray-700">
+                                  <input
+                                    type="text"
+                                    placeholder="Twitter Username"
+                                    className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+                                    value={twitterUsername}
+                                    onChange={(e) =>
+                                      setTwitterUsername(e.target.value)
+                                    }
+                                  />
+                                </div>
+                              </dd>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                            <FaGithub
+                              className="w-10 h-10 text-[#333] mr-2"
+                              style={{ color: "#333" }}
+                            />
+
+                            <div className="flex-1 w-0">
+                              <dd className="flex items-baseline justify-between">
+                                <div className="flex flex-col text-gray-900">
+                                  <span className="text-2xl font-semibold ">
+                                    GitHub
+                                  </span>
+                                </div>
+
+                                <div className="flex flex-col text-2xl font-semibold text-gray-700">
+                                  <input
+                                    type="text"
+                                    placeholder="GitHub Username"
+                                    className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+                                    value={githubUsername}
+                                    onChange={(e) =>
+                                      setGithubUsername(e.target.value)
+                                    }
+                                  />
+                                </div>
+                              </dd>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                            <FaDev
+                              className="w-10 h-10 text-[#090909] mr-2"
+                              style={{ color: "#090909" }}
+                            />
+
+                            <div className="flex-1 w-0">
+                              <dd className="flex items-baseline justify-between">
+                                <div className="flex flex-col text-gray-900">
+                                  <span className="text-2xl font-semibold ">
+                                    Dev.to
+                                  </span>
+                                </div>
+
+                                <div className="flex flex-col text-2xl font-semibold text-gray-700">
+                                  <input
+                                    type="password"
+                                    placeholder="Dev.to API Key"
+                                    className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+                                    value={devtoUsername}
+                                    onChange={(e) =>
+                                      setDevtoUsername(e.target.value)
+                                    }
+                                  />
+                                </div>
+                              </dd>
+                            </div>
+                          </div>
+                          <a
+                            href="https://developers.forem.com/api#section/Authentication/api_key"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block text-sm text-right text-blue-500"
+                            style={{ marginTop: "1px" }}
+                          >
+                            How to get Dev.to API Key?
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-1/2">
+                      <img src="images/add-platform.png" />
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center mt-5 ml-10 -mb-5">
+                    <div className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M11 17l-5-5m0 0l5-5m-5 5h12"
+                        />
+                      </svg>
+                      <Link href="/dashboard">
+                        <a>Back to Dashboard</a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+          {/* Footer */}
+          <div className="absolute bottom-0 w-full">
+            <Footer />
           </div>
         </div>
-
-        <button
-          className="bg-blue-500"
-          onClick={async () => {
-            // do saves for all social media one by one
-            const REALM_APP_ID = "followers_tracker-vlmoo";
-            const app = new Realm.App({ id: REALM_APP_ID });
-            const credentials = Realm.Credentials.anonymous();
-            // Twitter registration
-            const mongoUser = await app.logIn(credentials);
-            await mongoUser.functions.registerSocialHandle({
-              social: "twitter",
-              username: twitterUsername,
-              email: user.email,
-              followers: [],
-            });
-            // GitHub registration
-            await mongoUser.functions.registerSocialHandle({
-              social: "github",
-              username: githubUsername,
-              email: user.email,
-              followers: [],
-            });
-            // Devto registration
-            await mongoUser.functions.registerSocialHandle({
-              social: "devto",
-              username: devtoUsername,
-              email: user.email,
-              followers: [],
-            });
-          }}
-        >
-          SAVE
-        </button>
-      </main>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from "react";
-import { FaTwitter, FaGithub, FaDev } from "react-icons/fa";
+import { FaTwitter, FaGithub, FaDev, FaHeart } from "react-icons/fa";
+import { AiFillHeart } from "react-icons/ai";
 
 const Footer = () => {
   return (
@@ -39,13 +40,14 @@ const Footer = () => {
                 <FaGithub className="w-6 h-6" />
               </a>
             </div>
-            <p className="mt-8 text-base text-gray-500 md:mt-0 md:order-1">
-              Made with ❤️ by{" "}
+            <p className="flex items-center mt-8 text-base text-gray-500 md:mt-0 md:order-1">
+              Made with <FaHeart className="w-4 h-4 ml-1 mr-1 text-red-500" />{" "}
+              by{" "}
               <a
                 href="https://soumya.dev"
                 target="_blank"
                 rel="noreferrer noopener"
-                className="font-semibold hover:underline hover:text-indigo-400"
+                className="ml-1 font-semibold hover:underline hover:text-blue-500"
               >
                 geekySRM
               </a>
