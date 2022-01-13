@@ -1,3 +1,4 @@
+// Old settings page
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";

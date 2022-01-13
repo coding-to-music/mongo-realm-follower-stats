@@ -12,6 +12,7 @@ export default function ProtectedSettingsPage() {
   const [socialData, setSocialData] = useState(undefined);
   const [twitterUsername, setTwitterUsername] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
+  const [devtoUsername, setDevtoUsername] = useState("");
 
   useEffect(() => {
     async function fn() {
@@ -54,6 +55,8 @@ export default function ProtectedSettingsPage() {
             setTwitterUsername(data.username);
           } else if (socialMediaNames[i] === "github") {
             setGithubUsername(data.username);
+          } else if (socialMediaNames[i] === "devto") {
+            setDevtoUsername(data.username);
           }
         }
 
@@ -98,6 +101,15 @@ export default function ProtectedSettingsPage() {
               onChange={(e) => setGithubUsername(e.target.value)}
             />
           </div>
+          <div>
+            Devto:{" "}
+            <input
+              placeholder="devto api key"
+              className="border-2 border-red-200"
+              value={devtoUsername}
+              onChange={(e) => setDevtoUsername(e.target.value)}
+            />
+          </div>
         </div>
 
         <button
@@ -116,10 +128,16 @@ export default function ProtectedSettingsPage() {
               followers: [],
             });
             // GitHub registration
-            const mongoUser = await app.logIn(credentials);
             await mongoUser.functions.registerSocialHandle({
               social: "github",
               username: githubUsername,
+              email: user.email,
+              followers: [],
+            });
+            // Devto registration
+            await mongoUser.functions.registerSocialHandle({
+              social: "devto",
+              username: devtoUsername,
               email: user.email,
               followers: [],
             });
