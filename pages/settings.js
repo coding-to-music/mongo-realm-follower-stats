@@ -141,6 +141,7 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
+                                    disabled={!!twitterUsername}
                                     type="text"
                                     placeholder="Twitter Username"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
@@ -169,6 +170,7 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
+                                    disabled={!!githubUsername}
                                     type="text"
                                     placeholder="GitHub Username"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
@@ -197,6 +199,7 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
+                                    disabled={!!devtoUsername}
                                     type="password"
                                     placeholder="Dev.to API Key"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
@@ -218,6 +221,14 @@ export default function ProtectedSettingsPage() {
                           >
                             How to get Dev.to API Key?
                           </a>
+                          <div className="flex justify-end">
+                            <button
+                              type="button"
+                              className="inline-flex items-center px-4 py-2 text-sm font-medium text-right text-blue-700 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                            >
+                              Save
+                            </button>
+                          </div>
                           <div className="flex flex-col items-center">
                             <div className="flex mt-6 space-x-3 overflow-hidden">
                               <img
