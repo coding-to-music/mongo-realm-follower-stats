@@ -2,8 +2,8 @@ import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 import { useRouter } from "next/router";
-import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import Link from "next/link";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 export default function ProtectedUserPage() {
   const { user, error, isLoading } = useUser();

@@ -81,7 +81,7 @@ export default function ProtectedSettingsPage() {
 
       <main className="flex flex-col items-center justify-center flex-1 w-full px-20 text-center">
         <h2>Settings Page</h2>
-        <div>Hey {user.name}, here are your enabled social media:</div>
+        <div>Hey {user.name}, here are your enabled platforms:</div>
         <div>
           <div>
             Twitter:{" "}

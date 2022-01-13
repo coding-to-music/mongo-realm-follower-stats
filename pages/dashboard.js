@@ -1,12 +1,13 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
-import { useRouter } from "next/router";
-import { FaTwitter, FaArrowsAltH, FaGithub, FaDev } from "react-icons/fa";
-import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
-import Footer from "../components/Footer";
-
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+import { FaDev } from "react-icons/fa";
+import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
+import { MdOutlineMarkEmailUnread } from "react-icons/md";
+
+import Footer from "../components/Footer";
+import socialMediaMappings from "../utils/socialMediaMappings";
 import Link from "next/link";
 
 export default function ProtectedDashboardPage() {
@@ -79,15 +80,19 @@ export default function ProtectedDashboardPage() {
             {/* Hero section */}
             <div className="bg-gray-100">
               <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                <div>
-                  <h2 className="text-3xl font-extrabold tracking-tight text-gray-600">
+                <div className="p-20 bg-white rounded-lg shadow pb-28">
+                  <h2 className="ml-10 text-3xl font-extrabold tracking-tight text-gray-600">
                     Last week's stats
                   </h2>
-                  <h3 className="text-lg font-semibold text-gray-500">
-                    Next email scheduled on <b className="font-bold">Monday</b>
+                  <h3 className="ml-10 text-lg font-semibold text-gray-500">
+                    <div className="flex items-center space-x-1">
+                      Next email scheduled on{" "}
+                      <b className="ml-1 font-bold">Monday</b>{" "}
+                      <MdOutlineMarkEmailUnread className="w-4 h-4" />
+                    </div>
                   </h3>
 
-                  <div className="flex pl-4 mt-6 bg-white rounded-lg shadow pb-28">
+                  <div className="flex pl-4 mt-6 ">
                     {/* heading */}
                     <div className="w-1/2">
                       <div className="flex flex-col -mb-5 overflow-hidden">
@@ -97,7 +102,7 @@ export default function ProtectedDashboardPage() {
                               <dd className="flex items-baseline justify-between">
                                 <div className="flex text-gray-700">
                                   <span className="pt-5 font-semibold text-md">
-                                    Social media
+                                    Platform
                                   </span>
                                 </div>
 
@@ -138,34 +143,46 @@ export default function ProtectedDashboardPage() {
                             <div className="flex flex-col overflow-hidden bg-white ">
                               <div className="flex-grow px-4 py-5 sm:p-6">
                                 <div className="flex items-center">
-                                  <FaDev className="w-10 h-10 text-[#090909]" />
+                                  {/* <FaDev className="w-10 h-10 text-[#090909]" /> */}
+                                  {socialMediaMappings[sm].logo}
 
                                   <div className="flex-1 w-0 ml-5">
                                     <dd className="flex items-baseline justify-between">
                                       <div className="flex flex-col text-gray-900">
                                         <span className="text-2xl font-semibold ">
-                                          Dev.to
+                                          {socialMediaMappings[sm].name}
                                         </span>
-                                        <span className="text-sm text-gray-600">
-                                          @{socialData[sm]?.username}
-                                        </span>
+                                        {!socialMediaMappings[sm]
+                                          .maskedUsername && (
+                                          <a
+                                            className="text-sm text-gray-600"
+                                            href={`${socialMediaMappings[sm].url}{socialData[sm]?.username}`}
+                                          >
+                                            @{socialData[sm]?.username}
+                                          </a>
+                                        )}
                                       </div>
 
                                       <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                         {currentFollowers}
                                       </div>
 
-                                      <div className="flex items-center ml-2 text-sm font-semibold text-green-500">
+                                      <div className="flex items-center ml-2 text-sm font-semibold ">
                                         {difference > 0 ? (
                                           <TiArrowSortedUp className="w-6 h-6 text-green-500" />
                                         ) : (
                                           <TiArrowSortedDown className="w-6 h-6 text-red-500" />
                                         )}
-                                        <span className="text-lg font-extrabold">
+                                        <span
+                                          className={`text-lg font-extrabold ${
+                                            difference > 0
+                                              ? "text-green-500"
+                                              : "text-red-500"
+                                          }`}
+                                        >
                                           {difference}
                                         </span>
                                       </div>
-                                      {/* Above  */}
                                     </dd>
                                   </div>
                                 </div>
@@ -178,6 +195,28 @@ export default function ProtectedDashboardPage() {
                       <img src="images/social-girl.png" />
                     </div>
                   </div>
+
+                  <div className="flex justify-center mt-5 ml-10 -mb-5">
+                    <div className="inline-flex items-center px-4 py-2 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 4v16m8-8H4"
+                        />
+                      </svg>
+                      <Link href="/settings">
+                        <a>Add Platform</a>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -185,38 +224,6 @@ export default function ProtectedDashboardPage() {
           {/* Footer */}
           <div className="absolute bottom-0 w-full">
             <Footer />
-          </div>
-        </div>
-      </div>
-
-      <div className="mx-auto">
-        {/* <Header user={user} /> */}
-        <div className="flex flex-col items-center md:items-stretch md:flex-row md:space-x-36">
-          <h2>Welcome to your Dashboard {user.name}!</h2>
-
-          <div>
-            {socialMediaNames.map((sm) => {
-              const followersData = socialData[sm]?.followers;
-              // if(followersData)
-              const currentFollowers =
-                followersData &&
-                followersData[followersData?.length - 1]?.count;
-              let lastWeekFollowers = 0;
-              if (followersData?.length >= 8) {
-                lastWeekFollowers =
-                  followersData &&
-                  followersData[followersData?.length - 8]?.count;
-              } else {
-                lastWeekFollowers = followersData && followersData[0]?.count;
-              }
-              const difference = currentFollowers - lastWeekFollowers;
-              return (
-                <div>
-                  LOGO {sm} @{socialData[sm]?.username} - {currentFollowers}{" "}
-                  Followers | {difference || "Loading"} Followers/Week
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
