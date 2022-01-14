@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 import { HiOutlineHashtag } from "react-icons/hi";
 import { FaDev, FaTwitter, FaArrowsAltH, FaGithub } from "react-icons/fa";
+import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
+
 import { FiEdit } from "react-icons/fi";
 import { AiOutlinePicture } from "react-icons/ai";
 import { ImListNumbered } from "react-icons/im";
@@ -12,11 +14,12 @@ import Spinner from "../components/icons/Spinner";
 import Footer from "../components/Footer";
 
 export default function Home() {
+  const { user, error, isLoading } = useUser();
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
   const [github, setGithub] = useState("");
-
   const [message, setMessage] = useState("");
 
   return (
@@ -28,7 +31,7 @@ export default function Home() {
 
       <div className="overflow-y-auto">
         <div className="bg-white">
-          {/* <Header user={user} /> */}
+          <Header user={user} />
           <main>
             {/* Hero section */}
             <div className="relative">
@@ -39,64 +42,22 @@ export default function Home() {
                     <img
                       className="object-cover w-full h-full"
                       src="/images/banner.jpg"
-                      alt="Hashnode to Twitter"
+                      alt="FollowStats"
                     />
                     <div
-                      className="absolute inset-0 bg-gradient-to-r from-yellow-200 to-blue-700"
+                      className="absolute inset-0 bg-gradient-to-r from-yellow-700 to-blue-700"
                       style={{ mixBlendMode: "multiply" }}
                     />
                   </div>
                   <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                     <h1 className="text-4xl font-extrabold tracking-tight text-center sm:text-5xl lg:text-6xl">
-                      <span className="block text-white">
-                        Hashnode to Twitter
-                      </span>
+                      <span className="block text-white">FollowStats</span>
                     </h1>
-                    <p className="max-w-lg mx-auto mt-6 text-xl text-center text-indigo-100 sm:max-w-3xl">
-                      Post bite-sized summaries of your Hashnode blog post to
-                      increase reach 🚀 🚀
+                    <p className="max-w-lg mx-auto mt-6 text-2xl tracking-wide text-center text-blue-100 sm:max-w-3xl">
+                      Keep track your followers and audience growth.
+                      <br />
+                      Delivered to your inbox, every Monday 9 AM.
                     </p>
-                    <div className="flex flex-col max-w-sm mx-auto mt-10 sm:max-w-none sm:flex sm:justify-center">
-                      <div className="flex flex-col items-center justify-center w-full">
-                        <label className="mb-2 text-gray-200">
-                          Enter a Hashnode blog post URL below or{" "}
-                          <span
-                            className="font-medium text-blue-300 cursor-pointer"
-                            onClick={() =>
-                              setInputUrl(
-                                "https://geekysrm.hashnode.dev/what-is-tailwind-css"
-                              )
-                            }
-                          >
-                            Use example
-                          </span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="https://townhall.hashnode.com/auth0-hackathon"
-                          className="block w-full h-10 px-2 mb-4 border-gray-300 rounded-md md:w-1/2 focus:ring-indigo-500 focus:border-indigo-500 sm:text-lg"
-                          //   value={inputUrl}
-                          //   onChange={(e) => setInputUrl(e.target.value)}
-                        />
-                        {/* <p className="mb-4 -mt-3 font-medium text-red-400">
-                          {errorMessage}
-                        </p> */}
-                      </div>
-                      <div className="flex flex-col space-y-4 sm:space-y-0 sm:mx-auto sm:inline-grid sm:gap-5">
-                        <button
-                        //   disabled={loading}
-                        //   //   onClick={handleFetchClick}
-                        //   className={`flex items-center justify-center px-4 py-3 text-base font-medium text-white bg-indigo-600 hover:bg-indigo-800 border border-transparent rounded-md shadow-sm bg-opacity-90 sm:px-8 ${
-                        //     loading ? `cursor-not-allowed` : ``
-                        //   }`}
-                        >
-                          Fetch and Tweet
-                          {/* {loading && (
-                            <Spinner className="w-5 h-5 ml-2 text-white animate-spin" />
-                          )} */}
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -112,7 +73,7 @@ export default function Home() {
                   <div className="max-w-xl px-4 mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
                     <div>
                       <div>
-                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600">
+                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-blue-600">
                           <FaTwitter className="w-6 h-6 text-white" />
                         </span>
                       </div>
@@ -129,7 +90,7 @@ export default function Home() {
                         <div className="mt-6">
                           <a
                             href="#"
-                            className="inline-flex px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-800"
+                            className="inline-flex px-4 py-2 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-800"
                           >
                             Get started
                           </a>
@@ -140,8 +101,10 @@ export default function Home() {
                       <blockquote>
                         <div>
                           <p className="text-base text-gray-500">
-                            “Driving traffic to your blog is about as essential
-                            to your blogging success as your writing itself.”
+                            “Tracking your social media analytics is essential
+                            because it helps you figure out what is or isn’t
+                            working, enables you to track your progress
+                            throughout a given time.”
                           </p>
                         </div>
                         <footer className="mt-3">
@@ -149,17 +112,17 @@ export default function Home() {
                             <div className="flex-shrink-0">
                               <img
                                 className="w-6 h-6 rounded-full"
-                                src="/images/wishpond.png"
+                                src="/images/blog.png"
                                 alt=""
                               />
                             </div>
                             <a
-                              href="https://blog.wishpond.com/post/54926252742/12-formulas-how-to-use-twitter-to-drive-traffic-to"
+                              href="https://www.seguetech.com/why-tracking-your-social-media-analytics-is-important/"
                               target="_blank"
                               rel="noreferrer noopener"
                               className="text-base font-medium text-gray-700"
                             >
-                              wishpond.com
+                              seguetech.com
                             </a>
                           </div>
                         </footer>
@@ -182,7 +145,7 @@ export default function Home() {
                   <div className="max-w-xl px-4 mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2">
                     <div>
                       <div>
-                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-indigo-600">
+                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-blue-600">
                           <svg
                             className="w-6 h-6 text-white"
                             xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +177,7 @@ export default function Home() {
                         <div className="mt-6">
                           <a
                             href="#"
-                            className="inline-flex px-4 py-2 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-800"
+                            className="inline-flex px-4 py-2 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-800"
                           >
                             Get started
                           </a>
@@ -235,7 +198,7 @@ export default function Home() {
               </div>
             </div>
             {/* Gradient Feature Section */}
-            <div className="bg-gradient-to-r from-purple-800 to-indigo-700">
+            <div className="bg-gradient-to-r from-purple-800 to-blue-700">
               <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
                 <h2 className="text-3xl font-extrabold tracking-tight text-white">
                   Your blog's reach - to the moon 🚀 🌙
@@ -349,17 +312,18 @@ export default function Home() {
               <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 lg:flex lg:items-center lg:justify-between">
                 <h2 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
                   <span className="block">
-                    Ready to make your Hashnode articles{" "}
-                    <span className="text-indigo-500">popular?</span>
+                    Ready to be more{" "}
+                    <span className="text-blue-500">intentional</span> about
+                    growing your audience?
                   </span>
-                  <span className="text-xl font-semibold text-indigo-700">
+                  <span className="text-xl font-semibold text-blue-700">
                     Enter your Hashnode blog post's URL and tweet away!
                   </span>
                 </h2>
                 <div className="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
                   <a
                     href="#"
-                    className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-800 bg-opacity-90"
+                    className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-blue-800 bg-opacity-90"
                   >
                     Login
                   </a>

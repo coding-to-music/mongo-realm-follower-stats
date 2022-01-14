@@ -106,8 +106,8 @@ export default function Header({ user }) {
                 </div>
               </div>
             ) : (
-              <Link href="/api/auth/login">
-                <a className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-indigo-800 bg-opacity-90">
+              <Link href="/user">
+                <a className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-blue-500 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-blue-700 bg-opacity-90">
                   Login
                 </a>
               </Link>
