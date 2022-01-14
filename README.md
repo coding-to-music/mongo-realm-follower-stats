@@ -7,7 +7,6 @@ FollowStats enables you to be more intentional about building an audience and he
 It also sends you a weekly overview of your audience to your email every Monday morning at 09:00.
 
 [Live Application](https://followstats.vercel.app/)
-[View Source Code](https://github.com/geekysrm/followstats)
 
 ### Submission Category: Action Star
 
