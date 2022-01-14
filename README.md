@@ -10,6 +10,22 @@ It also sends you a weekly overview of your audience to your email every Monday 
 
 ### Submission Category: Action Star
 
+### How to run the application locally
+- The `realm-backend` folder contains the code for MongoDB Realm Functions.
+- A Sendgrid API Key is needed to be used in file https://github.com/geekysrm/followstats/blob/main/realm-backend/functions/sendFollowersReport.js#L66.
+- The sendgrid email HTML code is here: https://github.com/geekysrm/followstats/blob/main/sendgrid-email-template.html
+- Install all dependencies for the frontend: `npm i`
+- The root app is a Next.js app which can be run by using: `npm run dev`.
+- Auth0 also needs to be configured with GitHub as social login.
+- Please create a `env.local` file at the root of the project with the following content:
+```
+AUTH0_SECRET=<Auth0 secret>
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL=<Auth0 domain>
+AUTH0_CLIENT_ID=<Auth0 client ID>
+AUTH0_CLIENT_SECRET=<Auth0 client secret>
+```
+
 ### Additional Resources / Info
 
 #### Screenshots and Video
