@@ -11,10 +11,6 @@ It also sends you a weekly overview of your audience to your email every Monday 
 
 ### Submission Category: Action Star
 
-### Link to Code {% github https://github.com/geekysrm/followstats %}
-
-[note]: # "Our markdown editor supports pretty embeds. Try this syntax: `{% github link_to_your_repo %}` to share a GitHub repository"
-
 ### Additional Resources / Info
 
 #### Screenshots and Video
@@ -31,6 +27,13 @@ It also sends you a weekly overview of your audience to your email every Monday 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gcyk52hhzacwrf37qfx8.png)
 
 I have prepared a **demo video** which can be viewed here: [Video Link](https://link.soumya.dev/atlas-hack-demo)
+
+#### Technologies used
+- MongoDB Realm functions for backend
+- MongoDB Realm Triggers to keep track of follower count on schedule and send email on Monday
+- Auth0 for login
+- Taiwind CSS for styling
+- Next.js as frontend framework
 
 #### My experience
 
