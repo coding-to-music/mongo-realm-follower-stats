@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
 import Link from "next/link";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
-import { FaTwitter, FaGithub, FaDev } from "react-icons/fa";
+import { FaTwitter, FaGithub, FaDev, FaYoutube } from "react-icons/fa";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
-const supportedSocialMedia = ["twitter", "github", "devto"];
+const supportedSocialMedia = ["twitter", "github", "devto", "youtube"];
 
 export default function ProtectedSettingsPage() {
   const { user, error, isLoading } = useUser();
@@ -18,6 +18,7 @@ export default function ProtectedSettingsPage() {
   const [twitterUsername, setTwitterUsername] = useState("");
   const [githubUsername, setGithubUsername] = useState("");
   const [devtoUsername, setDevtoUsername] = useState("");
+  const [youtubeUsername, setYoutubeUsername] = useState("");
 
   useEffect(() => {
     async function fn() {
@@ -62,6 +63,8 @@ export default function ProtectedSettingsPage() {
             setGithubUsername(data.username);
           } else if (socialMediaNames[i] === "devto") {
             setDevtoUsername(data.username);
+          } else if (socialMediaNames[i] === "youtube") {
+            setYoutubeUsername(data.username);
           }
         }
 
@@ -140,7 +143,9 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
-                                    disabled={!!twitterUsername}
+                                    disabled={
+                                      !!socialMediaNames.includes("twitter")
+                                    }
                                     type="text"
                                     placeholder="Twitter Username"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
@@ -169,13 +174,46 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
-                                    disabled={!!githubUsername}
+                                    disabled={
+                                      !!socialMediaNames.includes("github")
+                                    }
                                     type="text"
                                     placeholder="GitHub Username"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
                                     value={githubUsername}
                                     onChange={(e) =>
                                       setGithubUsername(e.target.value)
+                                    }
+                                  />
+                                </div>
+                              </dd>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                            <FaYoutube
+                              className="w-10 h-10 text-[#ff0100] mr-2"
+                              style={{ color: "#ff0100" }}
+                            />
+
+                            <div className="flex-1 w-0">
+                              <dd className="flex items-baseline justify-between">
+                                <div className="flex flex-col text-gray-900">
+                                  <span className="text-2xl font-semibold ">
+                                    YouTube
+                                  </span>
+                                </div>
+
+                                <div className="flex flex-col text-2xl font-semibold text-gray-700">
+                                  <input
+                                    disabled={
+                                      !!socialMediaNames.includes("youtube")
+                                    }
+                                    type="text"
+                                    placeholder="YouTube channel URL"
+                                    className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
+                                    value={youtubeUsername}
+                                    onChange={(e) =>
+                                      setYoutubeUsername(e.target.value)
                                     }
                                   />
                                 </div>
@@ -198,7 +236,9 @@ export default function ProtectedSettingsPage() {
 
                                 <div className="flex flex-col text-2xl font-semibold text-gray-700">
                                   <input
-                                    disabled={!!devtoUsername}
+                                    disabled={
+                                      !!socialMediaNames.includes("devto")
+                                    }
                                     type="password"
                                     placeholder="Dev.to API Key"
                                     className="block w-full h-10 px-2 py-2 text-left bg-gray-100 rounded-md focus:ring-blue-500 focus:border-blue-500 sm:text-lg"
@@ -222,6 +262,37 @@ export default function ProtectedSettingsPage() {
                           </a>
                           <div className="flex justify-end">
                             <button
+                              onClick={async () => {
+                                const REALM_APP_ID = "followers_tracker-vlmoo";
+                                const app = new Realm.App({ id: REALM_APP_ID });
+                                const credentials =
+                                  Realm.Credentials.anonymous();
+                                const mongoUser = await app.logIn(credentials);
+                                await mongoUser.functions.registerSocialHandle({
+                                  email: user.email,
+                                  social: "twitter",
+                                  username: twitterUsername,
+                                  followers: [],
+                                });
+                                await mongoUser.functions.registerSocialHandle({
+                                  email: user.email,
+                                  social: "github",
+                                  username: githubUsername,
+                                  followers: [],
+                                });
+                                await mongoUser.functions.registerSocialHandle({
+                                  email: user.email,
+                                  social: "youtube",
+                                  username: youtubeUsername,
+                                  followers: [],
+                                });
+                                await mongoUser.functions.registerSocialHandle({
+                                  email: user.email,
+                                  social: "devto",
+                                  username: devtoUsername,
+                                  followers: [],
+                                });
+                              }}
                               type="button"
                               className="inline-flex items-center px-4 py-2 text-sm font-medium text-right text-white bg-blue-500 border border-transparent rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-200"
                             >
@@ -233,11 +304,6 @@ export default function ProtectedSettingsPage() {
                               <img
                                 className="inline-block object-cover w-10 h-10 rounded-full "
                                 src="/images/instagram.png"
-                                alt=""
-                              />
-                              <img
-                                className="inline-block object-cover w-10 h-10 rounded-full "
-                                src="/images/youtube.png"
                                 alt=""
                               />
                               <img

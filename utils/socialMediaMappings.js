@@ -1,4 +1,4 @@
-import { FaDev, FaTwitter, FaGithub } from "react-icons/fa";
+import { FaDev, FaTwitter, FaGithub, FaYoutube } from "react-icons/fa";
 
 const socialMediaMappings = {
   twitter: {
@@ -28,6 +28,16 @@ const socialMediaMappings = {
     ),
     url: "https://dev.to/",
     maskedUsername: true,
+  },
+  youtube: {
+    name: "YouTube",
+    logo: (
+      <FaYoutube
+        className="w-10 h-10 text-[#ff0100]"
+        style={{ color: "#ff0100" }}
+      />
+    ),
+    url: "",
   },
 };
 
