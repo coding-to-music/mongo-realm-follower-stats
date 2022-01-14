@@ -56,15 +56,14 @@ exports = function () {
             twitter: finalData.twitter,
             github: finalData.github,
             youtube: finalData.youtube,
-            devto: finalData.devto
+            devto: finalData.devto,
           },
         },
       ],
       template_id: "d-07d8ac1b1bce4d4aa4d1ed476d75a830",
     };
     const headers = {
-      Authorization:
-        "Bearer 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",
+      Authorization: "Bearer <SENDGRID_API_KEY>",
       "Content-Type": "application/json",
     };
     // Sending email below
