@@ -1,0 +1,7 @@
+{
+    "app_id": "followers_tracker-vlmoo",
+    "config_version": 20210101,
+    "name": "followers_tracker",
+    "location": "US-VA",
+    "deployment_model": "LOCAL"
+}

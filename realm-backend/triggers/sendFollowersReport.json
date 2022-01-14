@@ -1,0 +1,15 @@
+{
+    "name": "sendFollowersReport",
+    "type": "SCHEDULED",
+    "config": {
+        "schedule": "0 9 * * MON"
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "sendFollowersReport"
+            }
+        }
+    }
+}

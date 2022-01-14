@@ -1,0 +1,38 @@
+[
+    {
+        "name": "createUser",
+        "private": false
+    },
+    {
+        "name": "registerSocialHandle",
+        "private": false
+    },
+    {
+        "name": "findUser",
+        "private": false
+    },
+    {
+        "name": "getFollowers",
+        "private": false
+    },
+    {
+        "name": "fetchTwitterFollowers",
+        "private": true
+    },
+    {
+        "name": "fetchGithubFollowers",
+        "private": true
+    },
+    {
+        "name": "sendFollowersReport",
+        "private": true
+    },
+    {
+        "name": "fetchDevtoFollowers",
+        "private": true
+    },
+    {
+        "name": "fetchYoutubeFollowers",
+        "private": true
+    }
+]

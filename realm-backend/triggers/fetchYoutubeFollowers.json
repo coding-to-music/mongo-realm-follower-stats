@@ -1,0 +1,15 @@
+{
+    "name": "fetchYoutubeFollowers",
+    "type": "SCHEDULED",
+    "config": {
+        "schedule": "0 3 * * *"
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "fetchYoutubeFollowers"
+            }
+        }
+    }
+}
