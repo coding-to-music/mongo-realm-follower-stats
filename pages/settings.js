@@ -118,7 +118,7 @@ export default function ProtectedSettingsPage() {
                                 </div>
 
                                 <div className="flex font-semibold text-gray-700">
-                                  <span className="text-md">Username</span>
+                                  <span className="ml-6 text-md">Username</span>
                                 </div>
                               </dd>
                             </div>

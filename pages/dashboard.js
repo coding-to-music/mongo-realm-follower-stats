@@ -143,11 +143,10 @@ export default function ProtectedDashboardPage() {
                             <div className="flex flex-col overflow-hidden bg-white ">
                               <div className="flex-grow px-4 py-5 sm:p-6">
                                 <div className="flex items-center">
-                                  {/* <FaDev className="w-10 h-10 text-[#090909]" /> */}
                                   {socialMediaMappings[sm].logo}
 
                                   <div className="flex-1 w-0 ml-5">
-                                    <dd className="flex items-baseline justify-between">
+                                    <dd className="flex items-center justify-between">
                                       <div className="flex flex-col text-gray-900">
                                         <span className="text-2xl font-semibold ">
                                           {socialMediaMappings[sm].name}
@@ -167,21 +166,36 @@ export default function ProtectedDashboardPage() {
                                         {currentFollowers}
                                       </div>
 
-                                      <div className="flex items-center ml-2 text-sm font-semibold ">
-                                        {difference > 0 ? (
-                                          <TiArrowSortedUp className="w-6 h-6 text-green-500" />
-                                        ) : (
-                                          <TiArrowSortedDown className="w-6 h-6 text-red-500" />
+                                      <div className="flex">
+                                        {difference === 0 && (
+                                          <div>
+                                            <span
+                                              className={
+                                                "text-md font-medium text-blue-500"
+                                              }
+                                            >
+                                              No change
+                                            </span>
+                                          </div>
                                         )}
-                                        <span
-                                          className={`text-lg font-extrabold ${
-                                            difference > 0
-                                              ? "text-green-500"
-                                              : "text-red-500"
-                                          }`}
-                                        >
-                                          {difference}
-                                        </span>
+                                        {difference !== 0 && (
+                                          <div className="flex items-center ml-2 text-sm font-semibold">
+                                            {difference > 0 ? (
+                                              <TiArrowSortedUp className="w-6 h-6 text-green-500" />
+                                            ) : (
+                                              <TiArrowSortedDown className="w-6 h-6 text-red-500" />
+                                            )}
+                                            <span
+                                              className={`text-lg font-extrabold ${
+                                                difference > 0
+                                                  ? "text-green-500"
+                                                  : "text-red-500"
+                                              }`}
+                                            >
+                                              {difference}
+                                            </span>
+                                          </div>
+                                        )}
                                       </div>
                                     </dd>
                                   </div>
