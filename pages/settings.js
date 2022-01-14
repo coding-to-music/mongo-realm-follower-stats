@@ -6,6 +6,7 @@ import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { FaTwitter, FaGithub, FaDev } from "react-icons/fa";
 
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const supportedSocialMedia = ["twitter", "github", "devto"];
 
@@ -85,7 +86,7 @@ export default function ProtectedSettingsPage() {
 
       <div className="overflow-y-auto">
         <div className="bg-white">
-          {/* <Header user={user} /> */}
+          <Header user={user} />
           <main>
             <div className="bg-gray-100">
               <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -229,6 +230,11 @@ export default function ProtectedSettingsPage() {
                           </div>
                           <div className="flex flex-col items-center">
                             <div className="flex mt-6 space-x-3 overflow-hidden">
+                              <img
+                                className="inline-block object-cover w-10 h-10 rounded-full "
+                                src="/images/instagram.png"
+                                alt=""
+                              />
                               <img
                                 className="inline-block object-cover w-10 h-10 rounded-full "
                                 src="/images/youtube.png"

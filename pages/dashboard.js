@@ -1,14 +1,15 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import * as Realm from "realm-web";
+import Link from "next/link";
 import { useUser, withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { FaDev } from "react-icons/fa";
 import { TiArrowSortedUp, TiArrowSortedDown } from "react-icons/ti";
 import { MdOutlineMarkEmailUnread } from "react-icons/md";
 
 import Footer from "../components/Footer";
+import Header from "../components/Header";
 import socialMediaMappings from "../utils/socialMediaMappings";
-import Link from "next/link";
 
 export default function ProtectedDashboardPage() {
   const { user, error, isLoading } = useUser();
@@ -75,7 +76,7 @@ export default function ProtectedDashboardPage() {
 
       <div className="overflow-y-auto">
         <div className="bg-white">
-          {/* <Header user={user} /> */}
+          <Header user={user} />
           <main>
             <div className="bg-gray-100">
               <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">

@@ -30,15 +30,15 @@ export default function Header({ user }) {
   return (
     <header>
       <div className="relative bg-white">
-        <div className="flex items-center justify-between px-4 py-6 mx-auto max-w-7xl sm:px-6 md:justify-start md:space-x-10 lg:px-8">
-          <div className="flex justify-start lg:w-0 lg:flex-1">
+        <div className="flex items-center justify-between px-4 py-4 mx-auto max-w-7xl sm:px-6 md:justify-start md:space-x-10 lg:px-8">
+          <div className="flex items-center justify-start space-x-2 lg:w-0 lg:flex-1">
             <Link href="/">
               <a>
-                <span className="sr-only">Hashnode to Twitter</span>
+                <span className="sr-only">FollowStats</span>
                 <img
-                  className="w-auto h-8 sm:h-16"
+                  className="w-auto h-6 sm:h-10"
                   src="/images/logo.jpg"
-                  alt=""
+                  alt="logo"
                 />
               </a>
             </Link>
@@ -46,7 +46,7 @@ export default function Header({ user }) {
 
           <div className="flex items-center justify-end md:flex md:flex-1 lg:w-0">
             <a
-              href="https://github.com/geekysrm/hashnode-to-twitter"
+              href="https://github.com/geekysrm/followstats"
               target="_blank"
               rel="noreferrer noopener"
               className="text-base font-medium text-gray-800 whitespace-nowrap hover:text-gray-900"
@@ -79,15 +79,15 @@ export default function Header({ user }) {
 
                   {open && (
                     <div
-                      className="absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className="absolute right-0 z-50 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg w-50 ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                     >
                       <div>
                         <p className="block px-4 py-2 font-bold text-gray-700 text-md">
                           {user.name}
                         </p>
-                        <p className="block px-4 pb-2 text-sm text-gray-500">
-                          @{user.nickname}
+                        <p className="block px-4 pb-2 text-sm text-gray-500 overflow-ellipsis">
+                          {user.email}
                         </p>
                       </div>
 
