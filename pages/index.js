@@ -73,27 +73,25 @@ export default function Home() {
                   <div className="max-w-xl px-4 mx-auto sm:px-6 lg:py-16 lg:max-w-none lg:mx-0 lg:px-0">
                     <div>
                       <div>
-                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-blue-600">
+                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-blue-400 to-blue-600">
                           <FaTwitter className="w-6 h-6 text-white" />
                         </span>
                       </div>
                       <div className="mt-6">
                         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                          Edit tweets in a jiffy
+                          Keep a track of your followers
                         </h2>
                         <p className="mt-4 mr-10 text-xl text-gray-500">
-                          Make bite-sized tweet-threads from your articles while
-                          seeing the rich live tweet preview on the screen.
-                          <br />
-                          Try it now:
+                          FollowStats tracks your followers' count across
+                          various platforms everyday. So you don't have to track
+                          them yourself.
                         </p>
                         <div className="mt-6">
-                          <a
-                            href="#"
-                            className="inline-flex px-4 py-2 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-800"
-                          >
-                            Get started
-                          </a>
+                          <Link href="/user">
+                            <a className="inline-flex px-4 py-2 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-800">
+                              Get started
+                            </a>
+                          </Link>
                         </div>
                       </div>
                     </div>
@@ -133,7 +131,7 @@ export default function Home() {
                     <div className="pl-4 -mr-48 sm:pl-6 md:-mr-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
                       <img
                         className="w-full shadow-xl rounded-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:left-0 lg:h-full lg:w-auto lg:max-w-none"
-                        src="/images/screenshots/edit-screen.png"
+                        src="/images/screenshots/dashboard-screen.png"
                         alt="Inbox user interface"
                       />
                     </div>
@@ -145,20 +143,19 @@ export default function Home() {
                   <div className="max-w-xl px-4 mx-auto sm:px-6 lg:py-32 lg:max-w-none lg:mx-0 lg:px-0 lg:col-start-2">
                     <div>
                       <div>
-                        <span className="flex items-center justify-center w-12 h-12 rounded-md bg-gradient-to-r from-purple-600 to-blue-600">
+                        <span className="flex items-center justify-center w-12 h-12 text-white rounded-md bg-gradient-to-r from-blue-400 to-blue-600">
                           <svg
-                            className="w-6 h-6 text-white"
                             xmlns="http://www.w3.org/2000/svg"
+                            class="h-6 w-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
-                            aria-hidden="true"
                           >
                             <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
                             />
                           </svg>
                         </span>
@@ -166,13 +163,13 @@ export default function Home() {
 
                       <div className="mt-6">
                         <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                          Create provocative, intriguing tweet threads 🧵
+                          Add all your social media platforms and newsletters
                         </h2>
                         <p className="mt-4 text-lg text-gray-500">
-                          Twitter threads are one of the best ways to grow
-                          popular. Make irresistible tweet threads using popular
-                          #hashtags and emojis that bring traffic to your
-                          Hashnode blog.
+                          (newsletters coming soon..)
+                          <br /> You can track your followers across Dev.to,
+                          GitHub, Twitter, YouTube. More integrations for
+                          LinkedIn, Instagram, newsletters are coming soon.
                         </p>
                         <div className="mt-6">
                           <a
@@ -189,7 +186,7 @@ export default function Home() {
                     <div className="pr-4 -ml-48 sm:pr-6 md:-ml-16 lg:px-0 lg:m-0 lg:relative lg:h-full">
                       <img
                         className="w-full shadow-xl rounded-xl ring-1 ring-black ring-opacity-5 lg:absolute lg:right-0 lg:h-full lg:w-auto lg:max-w-none"
-                        src="/images/screenshots/done-screen.png"
+                        src="/images/screenshots/settings-screen.png"
                         alt="Customer profile user interface"
                       />
                     </div>
@@ -198,12 +195,12 @@ export default function Home() {
               </div>
             </div>
             {/* Gradient Feature Section */}
-            <div className="bg-gradient-to-r from-purple-800 to-blue-700">
+            <div className="bg-gradient-to-r from-blue-900 to-blue-500">
               <div className="max-w-4xl px-4 py-16 mx-auto sm:px-6 sm:pt-20 sm:pb-24 lg:max-w-7xl lg:pt-24 lg:px-8">
                 <h2 className="text-3xl font-extrabold tracking-tight text-white">
-                  Your blog's reach - to the moon 🚀 🌙
+                  Your followers' growth - to the moon 🚀 🌙
                 </h2>
-                <p className="max-w-3xl mt-4 text-lg text-purple-200">
+                {/* <p className="max-w-3xl mt-4 text-lg text-purple-200">
                   Features of <b>Hashnode to Twitter</b> at a glance.
                 </p>
                 <div className="grid grid-cols-1 mt-12 gap-x-6 gap-y-12 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-x-8 lg:gap-y-16">
@@ -303,7 +300,7 @@ export default function Home() {
                       </p>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -317,18 +314,17 @@ export default function Home() {
                     growing your audience?
                   </span>
                   <span className="text-xl font-semibold text-blue-700">
-                    Enter your Hashnode blog post's URL and tweet away!
+                    Add your social media handles and track away!
                   </span>
                 </h2>
                 <div className="mt-6 space-y-4 sm:space-y-0 sm:flex sm:space-x-5">
+                  <Link href="/user">
+                    <a className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-blue-800 bg-opacity-90">
+                      Login
+                    </a>
+                  </Link>
                   <a
-                    href="#"
-                    className="inline-flex items-center justify-center px-4 py-2 ml-4 text-base font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm whitespace-nowrap hover:bg-blue-800 bg-opacity-90"
-                  >
-                    Login
-                  </a>
-                  <a
-                    href="https://github.com/geekysrm/hashnode-to-twitter"
+                    href="https://github.com/geekysrm/followstats"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="text-base font-medium text-gray-800 whitespace-nowrap hover:text-gray-900"
