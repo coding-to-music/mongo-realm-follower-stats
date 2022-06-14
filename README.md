@@ -22,6 +22,8 @@ AUTH0_BASE_URL='http://localhost:3000'
 AUTH0_ISSUER_BASE_URL=<Auth0 domain>
 AUTH0_CLIENT_ID=<Auth0 client ID>
 AUTH0_CLIENT_SECRET=<Auth0 client secret>
+
+REALM_APP_ID=""
 ```
 
 ## GitHub
