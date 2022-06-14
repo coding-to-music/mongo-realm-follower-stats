@@ -17,7 +17,11 @@ https://followstats.vercel.app/
 ## Environment variables:
 
 ```java
-
+AUTH0_SECRET=<Auth0 secret>
+AUTH0_BASE_URL='http://localhost:3000'
+AUTH0_ISSUER_BASE_URL=<Auth0 domain>
+AUTH0_CLIENT_ID=<Auth0 client ID>
+AUTH0_CLIENT_SECRET=<Auth0 client secret>
 ```
 
 ## GitHub
