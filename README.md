@@ -1,3 +1,37 @@
+# mongo-realm-follower-stats
+
+# 🚀 Javascript full-stack 🚀
+
+https://github.com/coding-to-music/mongo-realm-follower-stats
+
+https://mongo-realm-follower-stats.vercel.app
+
+From / By https://github.com/geekysrm
+
+https://github.com/geekysrm/followstats
+
+https://dev.to/geekysrm/followstats-keep-track-of-your-followers-and-subscribers-and-get-weekly-emails-2f03
+
+https://followstats.vercel.app/
+
+## Environment variables:
+
+```java
+
+```
+
+## GitHub
+
+```java
+git init
+git add .
+git remote remove origin
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:coding-to-music/mongo-realm-follower-stats.git
+git push -u origin main
+```
+
 # FollowStats
 
 ### Overview of My Submission
@@ -11,6 +45,7 @@ It also sends you a weekly overview of your audience to your email every Monday 
 ### Submission Category: Action Star
 
 ### How to run the application locally
+
 - The `realm-backend` folder contains the code for MongoDB Realm Functions.
 - A Sendgrid API Key is needed to be used in file https://github.com/geekysrm/followstats/blob/main/realm-backend/functions/sendFollowersReport.js#L66.
 - The sendgrid email HTML code is here: https://github.com/geekysrm/followstats/blob/main/sendgrid-email-template.html
@@ -18,6 +53,7 @@ It also sends you a weekly overview of your audience to your email every Monday 
 - The root app is a Next.js app which can be run by using: `npm run dev`.
 - Auth0 also needs to be configured with GitHub as social login.
 - Please create a `env.local` file at the root of the project with the following content:
+
 ```
 AUTH0_SECRET=<Auth0 secret>
 AUTH0_BASE_URL='http://localhost:3000'
@@ -44,6 +80,7 @@ AUTH0_CLIENT_SECRET=<Auth0 client secret>
 I have prepared a **demo video** which can be viewed here: [Video Link](https://link.soumya.dev/atlas-hack-demo)
 
 #### Technologies used
+
 - MongoDB Realm functions for backend
 - MongoDB Realm Triggers to keep track of follower count on schedule and send email on Monday
 - Auth0 for login
@@ -68,8 +105,6 @@ The major challenge was to figure out the way to fetch followers/ subscribers da
 
 [Live Application](https://followstats.vercel.app/)
 
-
 [View Source Code](https://github.com/geekysrm/followstats)
-
 
 Please try this out and give your valuable feedback in the comments below or on [Twitter](https://twitter.com/geekysrm).

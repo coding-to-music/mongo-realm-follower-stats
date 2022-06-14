@@ -1,11 +1,15 @@
 {
-  "name": "follow-stats",
+  "name": "mongo-realm-follower-stats",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "vercel": "npm run deploy && vercel --prod",
+    "mongohost": "npm run deploy && npm run build && cp -a ./build/ ./hosting/files && realm-cli push --remote=tasktracker-bmumi --include-hosting",
+    "deploy": "git add . && git commit -m Build && git push",
+    "deploy:backend": "npm run deploy && cd ./realm-backend && realm-cli push"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.7.0",
