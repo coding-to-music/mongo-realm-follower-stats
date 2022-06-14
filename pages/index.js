@@ -223,7 +223,7 @@ export default function Home() {
                     </a>
                   </Link>
                   <a
-                    href="https://github.com/geekysrm/followstats"
+                    href="https://github.com/coding-to-music/mongo-realm-follower-stats"
                     target="_blank"
                     rel="noreferrer noopener"
                     className="text-base font-medium text-gray-800 whitespace-nowrap hover:text-gray-900"
