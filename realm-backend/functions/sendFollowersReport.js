@@ -2,7 +2,7 @@ exports = function () {
   const axios = require("axios");
   let usersCollection = context.services
     .get("mongodb-atlas")
-    .db("followers_tracker")
+    .db("mongo-realm-follower-stats")
     .collection("users");
 
   const allUsers = usersCollection.find({}).toArray();
@@ -20,7 +20,7 @@ exports = function () {
     socialMedia.forEach((sm) => {
       let socialCollection = context.services
         .get("mongodb-atlas")
-        .db("followers_tracker")
+        .db("mongo-realm-follower-stats")
         .collection(sm);
       const foundData = socialCollection.findOne({ email: user.email });
       const followersData = foundData.followers;

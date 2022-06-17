@@ -2,7 +2,7 @@ exports = function () {
   const axios = require("axios");
   let githubCollection = context.services
     .get("mongodb-atlas")
-    .db("followers_tracker")
+    .db("mongo-realm-follower-stats")
     .collection("github");
 
   const allGithubUsers = githubCollection.find({}).toArray();

@@ -46,7 +46,7 @@ export default function Header({ user }) {
 
           <div className="flex items-center justify-end md:flex md:flex-1 lg:w-0">
             <a
-              href="https://github.com/geekysrm/followstats"
+              href="https://github.com/coding-to-music/mongo-realm-follower-stats"
               target="_blank"
               rel="noreferrer noopener"
               className="text-base font-medium text-gray-800 whitespace-nowrap hover:text-gray-900"

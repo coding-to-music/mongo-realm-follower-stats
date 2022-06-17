@@ -1,15 +1,15 @@
 {
-    "collection": "youtube",
-    "database": "followers_tracker",
-    "roles": [
-        {
-            "name": "default",
-            "apply_when": {},
-            "write": true,
-            "insert": true,
-            "delete": true,
-            "search": true,
-            "additional_fields": {}
-        }
-    ]
+  "collection": "youtube",
+  "database": "mongo-realm-follower-stats",
+  "roles": [
+    {
+      "name": "default",
+      "apply_when": {},
+      "write": true,
+      "insert": true,
+      "delete": true,
+      "search": true,
+      "additional_fields": {}
+    }
+  ]
 }

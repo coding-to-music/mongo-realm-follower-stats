@@ -23,7 +23,7 @@ export default function ProtectedUserPage() {
     async function fn() {
       console.log("Clicked login");
 
-      const REALM_APP_ID = "followers_tracker-vlmoo";
+      const REALM_APP_ID = "mongo-realm-follower-stats-browz";
       const app = new Realm.App({ id: REALM_APP_ID });
       const credentials = Realm.Credentials.anonymous();
       try {
