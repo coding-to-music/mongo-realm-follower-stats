@@ -25,6 +25,7 @@ AUTH0_CLIENT_SECRET=<Auth0 client secret>
 
 REALM_APP_ID=""
 
+.
 ```
 
 ## GitHub
