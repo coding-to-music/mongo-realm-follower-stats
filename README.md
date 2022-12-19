@@ -15,9 +15,13 @@ https://mongo-realm-follower-stats.vercel.app
 
 From / By https://github.com/geekysrm
 
-https://github.com/geekysrm/followstats
+https://github.com/geekysrm/followstats - deleted, the new one is https://github.com/geekysrm/follow-stats
 
 https://dev.to/geekysrm/followstats-keep-track-of-your-followers-and-subscribers-and-get-weekly-emails-2f03
+
+2022 article:
+
+https://dev.to/geekysrm/followstats-keep-track-of-your-followers-and-subscribers-and-get-weekly-emails-4g7o
 
 https://followstats.vercel.app/
 
@@ -44,6 +48,18 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:coding-to-music/mongo-realm-follower-stats.git
 git push -u origin main
+```
+
+## Asked question on dev.to to the author
+
+https://dev.to/geekysrm/followstats-keep-track-of-your-followers-and-subscribers-and-get-weekly-emails-4g7o
+
+Does the repo work "as-is" or does the init code need to be written? https://github.com/geekysrm/follow-stats/blob/main/utils/init.js
+
+init.js says:
+
+```
+// Initialize mongoDB and connect to correct Realm function
 ```
 
 # FollowStats
