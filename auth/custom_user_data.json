@@ -1,0 +1,6 @@
+{
+    "enabled": true,
+    "database_name": "mongo-realm-follower-stats",
+    "collection_name": "User",
+    "user_id_field": "_id"
+}

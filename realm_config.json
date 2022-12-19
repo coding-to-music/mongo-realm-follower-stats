@@ -1,0 +1,9 @@
+{
+    "app_id": "mongo-realm-follower-stats-browz",
+    "config_version": 20210101,
+    "name": "mongo-realm-follower-stats",
+    "location": "US-VA",
+    "provider_region": "aws-us-east-1",
+    "deployment_model": "GLOBAL",
+    "environment": "production"
+}
