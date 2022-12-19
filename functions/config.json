@@ -1,0 +1,43 @@
+[
+    {
+        "name": "resetFunc",
+        "private": false,
+        "disable_arg_logs": true
+    },
+    {
+        "name": "findUser",
+        "private": false
+    },
+    {
+        "name": "registerSocialHandle",
+        "private": false
+    },
+    {
+        "name": "fetchDevtoFollowers",
+        "private": true
+    },
+    {
+        "name": "fetchGithubFollowers",
+        "private": true
+    },
+    {
+        "name": "fetchYoutubeFollowers",
+        "private": true
+    },
+    {
+        "name": "getFollowers",
+        "private": false
+    },
+    {
+        "name": "sendFollowersReport",
+        "private": true
+    },
+    {
+        "name": "createUser",
+        "private": false
+    },
+    {
+        "name": "fetchTwitterFollowers",
+        "private": true
+    }
+]

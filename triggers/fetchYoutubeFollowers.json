@@ -1,0 +1,17 @@
+{
+    "id": "62a84584cc74953617799849",
+    "name": "fetchYoutubeFollowers",
+    "type": "SCHEDULED",
+    "config": {
+        "schedule": "0 3 * * *",
+        "skip_catchup_events": false
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "fetchYoutubeFollowers"
+            }
+        }
+    }
+}
