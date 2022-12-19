@@ -1,6 +1,13 @@
 # mongo-realm-follower-stats
 
-# 🚀 Javascript full-stack 🚀
+# 🚀
+
+- MongoDB Realm functions for backend
+- MongoDB Realm Triggers to keep track of follower count on schedule and send email on Monday
+- Auth0 for login
+- Taiwind CSS for styling
+- Next.js as frontend framework
+  🚀
 
 https://github.com/coding-to-music/mongo-realm-follower-stats
 
